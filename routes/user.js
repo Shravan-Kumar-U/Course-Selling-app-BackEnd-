@@ -5,6 +5,7 @@ const { z } = require("zod");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { JWT_USER_PASSWORD } = require("../config");
+const { perchaseModel } = require("../db");
 
 userRouter.post("/signup", async function(req, res){
     //Input validation(Authentication) using Zod library
@@ -97,7 +98,15 @@ userRouter.post("/signin", async function(req, res){
 
 })
 
-userRouter.post("/purchases", function(req, res){
+userRouter.post("/purchases", async function(req, res){
+    const userId = req.userId;
+    const perchase = await perchaseModel.find({
+        userId
+    })
+    req.json({
+        perchase
+    })
+
 
 })
 
