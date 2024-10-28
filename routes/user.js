@@ -104,7 +104,7 @@ userRouter.post("/purchases", async function(req, res){
         userId
     })
     req.json({
-        perchase
+        perchas
     })
 
 
